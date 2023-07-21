@@ -3,6 +3,7 @@ import 'package:shop/models/product.dart';
 
 class ProductItem extends StatelessWidget {
   final Product product;
+  
   const ProductItem({
     Key? key,
     required this.product,
@@ -18,6 +19,7 @@ class ProductItem extends StatelessWidget {
           leading: IconButton(
             onPressed: () {},
             icon: const Icon(Icons.favorite),
+            color: Theme.of(context).colorScheme.secondary,
           ),
           title: Text(
             product.title,
@@ -26,6 +28,7 @@ class ProductItem extends StatelessWidget {
           trailing: IconButton(
             onPressed: () {},
             icon: const Icon(Icons.shopping_cart),
+            color: Theme.of(context).colorScheme.secondary,
           ),
         ),
         child: Image.network(
