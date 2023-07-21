@@ -30,7 +30,7 @@ git clone https://github.com/marcelinx/shop-flutter.git
 3. Navegue até o diretório do projeto:
 
 ```
-cd shop-flutter
+cd shop
 ```
 
 4. Execute o aplicativo com o seguinte comando:
@@ -44,7 +44,3 @@ Isso iniciará o aplicativo em um emulador ou dispositivo conectado.
 ## Contribuições
 
 Contribuições são bem-vindas! Se você quiser adicionar novos recursos, corrigir bugs ou melhorar a documentação, fique à vontade para abrir um PR (Pull Request). Vamos analisar suas alterações e, se estiverem de acordo com o objetivo do projeto, teremos o prazer de mesclá-las.
-
----
-
-Este arquivo README é um exemplo e pode ser adaptado de acordo com as necessidades do seu projeto. Lembre-se de atualizar as seções relevantes, incluindo as capturas de tela, pré-requisitos e estrutura do projeto, para refletir a realidade do seu aplicativo shop em Flutter. Boa codificação! 😊
