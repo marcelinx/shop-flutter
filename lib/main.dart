@@ -15,9 +15,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => Productlist(),
+      create: (_) => ProductList(),
       child: MaterialApp(
-        title: 'Shop',
+        title: 'Minha Loja',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSwatch().copyWith(
             primary: Colors.purple,
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           ),
           fontFamily: 'Lato',
         ),
-        home: ProductsOverviewPage(),
+        home: const ProductsOverviewPage(),
         routes: {
           AppRoutes.productDetail: (ctx) => const ProductDetailPage(),
         },
