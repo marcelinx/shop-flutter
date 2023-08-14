@@ -9,7 +9,7 @@ class OrderList with ChangeNotifier {
   final List<Order> _items = [];
 
   List<Order> get items {
-    return [...items];
+    return [..._items];
   }
 
   int get itemsCount {
