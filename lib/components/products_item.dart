@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-
-import '../models/product.dart';
+import 'package:shop/models/product.dart';
+import 'package:shop/utils/app_routes.dart';
 
 class ProductItem extends StatelessWidget {
   final Product product;
-  const ProductItem(this.product, {Key? key}) : super(key: key);
+
+  const ProductItem(
+    this.product, {
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +22,19 @@ class ProductItem extends StatelessWidget {
         child: Row(
           children: [
             IconButton(
-              onPressed: () {},
-              color: Theme.of(context).colorScheme.primary,
               icon: const Icon(Icons.edit),
+              color: Theme.of(context).colorScheme.primary,
+              onPressed: () {
+                Navigator.of(context).pushNamed(
+                  AppRoutes.products_form,
+                  arguments: product,
+                );
+              },
             ),
             IconButton(
-              onPressed: () {},
-              color: Theme.of(context).colorScheme.error,
               icon: const Icon(Icons.delete),
+              color: Theme.of(context).errorColor,
+              onPressed: () {},
             ),
           ],
         ),
