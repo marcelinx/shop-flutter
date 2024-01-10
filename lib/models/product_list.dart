@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shop/data/dummy_data.dart';
@@ -84,22 +83,3 @@ class ProductList with ChangeNotifier {
     }
   }
 }
-
-// bool _showFavoriteOnly = false;
-
-//   List<Product> get items {
-//     if (_showFavoriteOnly) {
-//       return _items.where((prod) => prod.isFavorite).toList();
-//     }
-//     return [..._items];
-//   }
-
-//   void showFavoriteOnly() {
-//     _showFavoriteOnly = true;
-//     notifyListeners();
-//   }
-
-//   void showAll() {
-//     _showFavoriteOnly = false;
-//     notifyListeners();
-//   }
