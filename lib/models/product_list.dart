@@ -1,13 +1,15 @@
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:shop/data/dummy_data.dart';
 import 'package:shop/models/product.dart';
+import 'package:shop/utils/constants.dart';
 
 class ProductList with ChangeNotifier {
-  final _baseUrl = 'https://shop-marcelinx-default-rtdb.firebaseio.com';
+  final _baseUrl = Constants.productBaseUrl;
+
   final List<Product> _items = dummyProducts;
 
   List<Product> get items => [..._items];
@@ -30,9 +32,9 @@ class ProductList with ChangeNotifier {
     );
 
     if (hasId) {
-     return updateProduct(product);
+      return updateProduct(product);
     } else {
-     return addProduct(product);
+      return addProduct(product);
     }
   }
 
@@ -49,6 +51,7 @@ class ProductList with ChangeNotifier {
         },
       ),
     );
+
     return future.then<void>((response) {
       final id = jsonDecode(response.body)['name'];
       _items.add(Product(
@@ -63,7 +66,7 @@ class ProductList with ChangeNotifier {
     });
   }
 
-  Future<void>updateProduct(Product product) {
+  Future<void> updateProduct(Product product) {
     int index = _items.indexWhere((p) => p.id == product.id);
 
     if (index >= 0) {

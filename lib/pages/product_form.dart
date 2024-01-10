@@ -84,7 +84,21 @@ class _ProductFormPageState extends State<ProductFormPage> {
     Provider.of<ProductList>(
       context,
       listen: false,
-    ).saveProduct(_formData).then((value) {
+    ).saveProduct(_formData).catchError((error) {
+      return showDialog<void>(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text('Ocorreu um erro!'),
+          content: const Text('Ocorreu um erro para salvar o produto.'),
+          actions: [
+            TextButton(
+              child: const Text('Ok'),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ],
+        ),
+      );
+    }).then((value) {
       setState(() => _isLoading = false);
       Navigator.of(context).pop();
     });
@@ -103,7 +117,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
         ],
       ),
       body: _isLoading
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
           : Padding(
@@ -122,15 +136,12 @@ class _ProductFormPageState extends State<ProductFormPage> {
                       onSaved: (name) => _formData['name'] = name ?? '',
                       validator: (_name) {
                         final name = _name ?? '';
-
                         if (name.trim().isEmpty) {
                           return 'Nome é obrigatório.';
                         }
-
                         if (name.trim().length < 3) {
                           return 'Nome precisa no mínimo de 3 letras.';
                         }
-
                         return null;
                       },
                     ),
