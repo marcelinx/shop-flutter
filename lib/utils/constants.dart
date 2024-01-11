@@ -1,4 +1,4 @@
 class Constants {
   static const productBaseUrl =
-      'https://shop-marcelinx-default-rtdb.firebaseio.com/';
+      'https://shop-marcelinx-default-rtdb.firebaseio.com/products.json';
 }
