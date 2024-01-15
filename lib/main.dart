@@ -46,7 +46,6 @@ class MyApp extends StatelessWidget {
           ),
           fontFamily: 'Lato',
         ),
-        // home: const ProductsOverviewPage(),
         routes: {
           AppRoutes.auth: (ctx) => AuthPage(),
           AppRoutes.home: (ctx) => ProductsOverviewPage(),
