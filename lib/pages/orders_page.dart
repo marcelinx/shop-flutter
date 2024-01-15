@@ -12,34 +12,36 @@ class OrdersPage extends StatefulWidget {
 }
 
 class _OrdersPageState extends State<OrdersPage> {
-  bool _isLoading = false;
-
-  @override
-  void initState() {
-    super.initState();
-    Provider.of<OrderList>(
-      context,
-      listen: false,
-    ).loadOrders().then((_) {
-      setState(() => _isLoading = false);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    final OrderList orders = Provider.of(context);
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Meus Pedidos'),
       ),
       drawer: const AppDrawer(),
-      body: _isLoading
-          ? Center(child: CircularProgressIndicator())
-          : ListView.builder(
-              itemCount: orders.itemsCount,
-              itemBuilder: (ctx, i) => OrderWidget(order: orders.items[i]),
-            ),
+      body: FutureBuilder(
+        future: Provider.of<OrderList>(context, listen: false).loadOrders(),
+        builder: (context, snapshot) {
+          return snapshot.connectionState == ConnectionState.waiting
+              ? const Center(child: CircularProgressIndicator())
+              : (snapshot.error != null)
+                  ? const Center(child: Text('Ocorreu um erro'))
+                  : Consumer<OrderList>(
+                      builder: (context, orders, child) => ListView.builder(
+                        itemCount: orders.itemsCount,
+                        itemBuilder: (context, index) =>
+                            OrderWidget(order: orders.items[index]),
+                      ),
+                    );
+        },
+      ),
     );
   }
+
+  // body: _isLoading
+  //     ? const Center(child: CircularProgressIndicator())
+  //     : ListView.builder(
+  //         itemCount: orders.itemsCount,
+  //         itemBuilder: (ctx, i) => OrderWidget(order: orders.items[i]),
+  //       ),
 }
