@@ -1,46 +1,42 @@
-# Shop Simples em Flutter
+# E-Commerce App em Flutter
 
-Este é um aplicativo de shop simples desenvolvido em Flutter, uma estrutura de desenvolvimento de aplicativos móveis de código aberto criada pelo Google. O aplicativo permite aos usuários visualizar uma lista de produtos disponíveis para compra e adicionar itens ao carrinho de compras. O objetivo deste projeto é fornecer um exemplo básico de como criar um shop funcional em Flutter.
+Este é um aplicativo de comércio eletrônico desenvolvido em Flutter, uma estrutura de desenvolvimento móvel da Google. O aplicativo apresenta uma arquitetura robusta e incorpora práticas modernas de desenvolvimento para oferecer uma experiência completa de compra online.
 
-## Recursos
+## Recursos e Tecnologias Principais
 
-- Exibição de uma lista de produtos disponíveis.
-- Adição de itens ao carrinho de compras.
-- Remoção de itens do carrinho de compras.
-- Exibição do total de compras no carrinho.
-- Finalização da compra e exibição de uma mensagem de confirmação.
+- **Catálogo de Produtos Dinâmico:** Implementação de um catálogo extenso de produtos com detalhes como imagens, descrições e preços. O sistema utiliza uma base de dados em tempo real (Firebase) para garantir uma experiência dinâmica.
 
-## Pré-requisitos
+- **Carrinho de Compras Interativo:** Desenvolvimento de um carrinho de compras que permite aos usuários adicionar e remover itens dinamicamente, com atualização em tempo real do total. O gerenciamento de estado é otimizado para fornecer uma experiência fluida.
 
-Certifique-se de ter o seguinte software instalado em seu sistema:
+- **Autenticação Segura com Firebase:** Implementação de um sistema de autenticação seguro, incluindo login automático, logout e registro de usuários. A gestão de tokens e a integração com o Firebase reforçam a segurança do aplicativo.
 
-- Android SDK ou iOS SDK
-- Algum editor de código, como o Android Studio ou o Visual Studio Code.
+- **API Restful e Comunicação HTTP:** Desenvolvimento de uma API Restful para facilitar a comunicação HTTP, permitindo a integração eficiente com serviços externos.
 
-## Como Executar
+- **Associação de Pedidos e Favoritos:** Capacidade de associar pedidos e produtos favoritos aos usuários, personalizando a experiência de compra.
 
-1. Certifique-se de ter instalado o Flutter SDK seguindo as [instruções oficiais](https://flutter.dev/docs/get-started/install).
+- **Formulário Dinâmico com Firebase:** Implementação de um formulário inovador que, ao inserir um link, gera automaticamente uma imagem e armazena os dados no Firebase.
 
-2. Clone este repositório em sua máquina local usando o seguinte comando:
+- **Animações Avançadas:** Adição de animações para aprimorar a experiência do usuário, tornando a navegação e interação mais envolventes.
 
-```
+- **Gerenciamento de Estado Avançado com MobX:** Implementação de práticas modernas de gerenciamento de estado, incluindo navegação entre telas, uso de providers, MobX, Consumer, CRUD de produtos, exclusão otimista e pull to refresh.
+
+## Pré-requisitos e Execução
+
+Certifique-se de ter o seguinte software instalado:
+
+- Android SDK ou iOS SDK.
+- Editor de código, como Android Studio ou Visual Studio Code.
+
+Siga as [instruções oficiais do Flutter](https://flutter.dev/docs/get-started/install) para instalar o Flutter SDK.
+
+Clone o repositório e execute o aplicativo:
+
+```bash
 git clone https://github.com/marcelinx/shop-flutter.git
-```
-
-3. Navegue até o diretório do projeto:
-
-```
 cd shop
-```
-
-4. Execute o aplicativo com o seguinte comando:
-
-```
 flutter run
 ```
 
-Isso iniciará o aplicativo em um emulador ou dispositivo conectado.
-
 ## Contribuições
 
-Contribuições são bem-vindas! Se você quiser adicionar novos recursos, corrigir bugs ou melhorar a documentação, fique à vontade para abrir um PR (Pull Request). Vamos analisar suas alterações e, se estiverem de acordo com o objetivo do projeto, teremos o prazer de mesclá-las.
+Contribuições são bem-vindas! Sinta-se à vontade para abrir um PR (Pull Request) para adicionar novos recursos, corrigir bugs ou melhorar a documentação. Analisaremos suas alterações e mesclaremos aquelas que estiverem alinhadas com os objetivos do projeto.
