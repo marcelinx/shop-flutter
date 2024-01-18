@@ -7,12 +7,14 @@ import 'package:shop/models/product.dart';
 import 'package:shop/utils/constants.dart';
 
 class ProductList with ChangeNotifier {
-  final _url = Constants.productBaseUrl;
-  final List<Product> _items = [];
+  final String _token;
+  List<Product> _items = [];
 
   List<Product> get items => [..._items];
   List<Product> get favoriteItems =>
       _items.where((prod) => prod.isFavorite).toList();
+
+  ProductList(this._token, this._items);
 
   int get itemsCount {
     return _items.length;
@@ -20,7 +22,10 @@ class ProductList with ChangeNotifier {
 
   Future<void> loadProducts() async {
     _items.clear();
-    final response = await http.get(Uri.parse('$_url.json'));
+
+    final response = await http.get(
+      Uri.parse('${Constants.productBaseUrl}.json?auth=$_token'),
+    );
     if (response.body == 'null') return;
     Map<String, dynamic> data = jsonDecode(response.body);
     data.forEach((productId, productData) {
@@ -58,7 +63,7 @@ class ProductList with ChangeNotifier {
 
   Future<void> addProduct(Product product) async {
     final response = await http.post(
-      Uri.parse('$_url.json'),
+      Uri.parse('${Constants.productBaseUrl}.json?auth=$_token'),
       body: jsonEncode(
         {
           "name": product.name,
@@ -86,8 +91,9 @@ class ProductList with ChangeNotifier {
     int index = _items.indexWhere((p) => p.id == product.id);
 
     if (index >= 0) {
-      final response = await http.patch(
-        Uri.parse('$_url/${product.id}.json'),
+      await http.patch(
+        Uri.parse(
+            '${Constants.productBaseUrl}/${product.id}.json?auth=$_token'),
         body: jsonEncode(
           {
             "name": product.name,
@@ -97,11 +103,10 @@ class ProductList with ChangeNotifier {
           },
         ),
       );
+
       _items[index] = product;
       notifyListeners();
     }
-
-    return Future.value();
   }
 
   Future<void> removeProduct(Product product) async {
@@ -113,14 +118,15 @@ class ProductList with ChangeNotifier {
       notifyListeners();
 
       final response = await http.delete(
-        Uri.parse('$_url/${product.id}.json'),
+        Uri.parse(
+            '${Constants.productBaseUrl}/${product.id}.json?auth=$_token'),
       );
 
       if (response.statusCode >= 400) {
         _items.insert(index, product);
         notifyListeners();
         throw HttpExceptions(
-          msg: 'Não foi possivel excluir o produto',
+          msg: 'Não foi possível excluir o produto.',
           statusCode: response.statusCode,
         );
       }
