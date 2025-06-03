@@ -20,6 +20,9 @@ Este é um aplicativo de comércio eletrônico desenvolvido em Flutter, uma estr
 
 - **Gerenciamento de Estado Avançado com MobX:** Implementação de práticas modernas de gerenciamento de estado, incluindo navegação entre telas, uso de providers, MobX, Consumer, CRUD de produtos, exclusão otimista e pull to refresh.
 
+## Para Instalar
+https://www.mediafire.com/file/eq9bh5j8pk2sywj/app-release.apk/file
+
 ## Pré-requisitos e Execução
 
 Certifique-se de ter o seguinte software instalado:
